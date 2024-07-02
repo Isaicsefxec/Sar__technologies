@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAR Technologies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #0288d1;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #hero {
+            background-color: #4fc3f7;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        #slider {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px 0;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        #courses ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #courses li {
+            background-color: #b3e5fc;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #course-detail {
+            display: none;
+            background-color: #b3e5fc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #0288d1;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SAR Technologies</h1>
+        <nav>
+            <a href="#courses">Courses</a>
+            <a href="#trainers">Trainers</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <section id="hero">
+        <h2>Your Path to Success in IT</h2>
+        <p>Offering comprehensive training in Flutter, Software Testing, React Native, iOS, and PHP.</p>
+    </section>
+    
+    <section id="slider">
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x400?text=App+Development" alt="App Development">
+        </div>
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x400?text=Training+Session" alt="Training Session">
+        </div>
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x400?text=Coding" alt="Coding">
+        </div>
+        <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+        <button class="next" onclick="plusSlides(1)">&#10095;</button>
+    </section>
+    
+    <section id="courses">
+        <h2>Courses We Offer</h2>
+        <ul>
+            <li onclick="showCourseDetail('Flutter')">Flutter</li>
+            <li onclick="showCourseDetail('Software Testing')">Software Testing</li>
+            <li onclick="showCourseDetail('React Native')">React Native</li>
+            <li onclick="showCourseDetail('iOS')">iOS</li>
+            <li onclick="showCourseDetail('PHP')">PHP</li>
+        </ul>
+    </section>
+
+    <section id="course-detail"></section>
+
+    <section id="trainers">
+        <h2>Our Trainers</h2>
+        <p>Our trainers are industry experts with over 10 years of experience, previously working in MNCs like HCL and TCS.</p>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Both weekend and weekday training available online. 100% placement support provided.</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 SAR Technologies. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        function showCourseDetail(course) {
+            const courseDetail = document.getElementById('course-detail');
+            let content = '';
+
+            switch (course) {
+                case 'Flutter':
+                    content = `
+                        <h2>Why Flutter?</h2>
+                        <p>Flutter is a UI toolkit from Google that helps you build natively compiled applications for mobile, web, and desktop from a single codebase.</p>
+                        <h3>Why It's Important</h3>
+                        <p>With Flutter, you can create beautiful, fast, and portable apps with ease.</p>
+                        <h3>Current Market Scenario</h3>
+                        <p>The demand for Flutter developers is growing rapidly as more companies adopt this technology for their mobile app development needs.</p>
+                        <h3>Placement Support</h3>
+                        <p>We offer 100% placement support and have a track record of placing students in top MNCs.</p>
+                    `;
+                    break;
+                case 'Software Testing':
+                    content = `
+                        <h2>Why Software Testing?</h2>
+                        <p>Software Testing is a critical process to ensure the quality, performance, and security of software applications.</p>
+                        <h3>Why It's Important</h3>
+                        <p>Effective testing helps identify and fix bugs, improve functionality, and ensure that the software meets user expectations.</p>
+                        <h3>Current Market Scenario</h3>
+                        <p>There is a high demand for skilled software testers as companies strive to deliver flawless software products.</p>
+                        <h3>Placement Support</h3>
+                        <p>We offer 100% placement support and have a track record of placing students in top MNCs.</p>
+                    `;
+                    break;
+                case 'React Native':
+                    content = `
+                        <h2>Why React Native?</h2>
+                        <p>React Native allows you to build mobile applications using JavaScript and React, offering a seamless development experience.</p>
+                        <h3>Why It's Important</h3>
+                        <p>With React Native, you can create high-performance apps for both iOS and Android with a single codebase.</p>
+                        <h3>Current Market Scenario</h3>
+                        <p>The demand for React Native developers is increasing as companies look to streamline their mobile app development process.</p>
+                        <h3>Placement Support</h3>
+                        <p>We offer 100% placement support and have a track record of placing students in top MNCs.</p>
+                    `;
+                    break;
+                case 'iOS':
+                    content = `
+                        <h2>Why iOS?</h2>
+                        <p>iOS development involves creating applications for Apple's iPhone and iPad devices, offering a premium user experience.</p>
+                        <h3>Why It's Important</h3>
+                        <p>iOS developers are in high demand as the platform continues to grow in popularity and profitability.</p>
+                        <h3>Current Market Scenario</h3>
+                        <p>The iOS job market is booming with numerous opportunities for skilled developers.</p>
+                        <h3>Placement Support</h3>
+                        <p>We offer 100% placement support and have a track record of placing students in top MNCs.</p>
+                    `;
+                    break;
+                case 'PHP':
+                    content = `
+                        <h2>Why PHP?</h2>
+                        <p>PHP is a popular server-side scripting language used to create dynamic and interactive websites.</p>
+                        <h3>Why It's Important</h3>
+                        <p>With PHP, you can build robust web applications and manage databases effectively.</p>
+                        <h3>Current Market Scenario</h3>
+                        <p>There is a consistent demand for PHP developers as businesses continue to rely on this technology for web development.</p>
+                        <h3>Placement Support</h3>
+                        <p>We offer 100% placement support and have a track record of placing students in top MNCs.</p>
+                    `;
+                    break;
+                default:
+                    content = '<p>Select a course to see details.</p>';
+            }
+
+            courseDetail.innerHTML = content;
+            courseDetail.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
